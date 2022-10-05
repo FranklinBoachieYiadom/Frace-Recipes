@@ -8,6 +8,7 @@ import Layout from '../components/layout/Layout';
 import '../styles/global.css';
 import { getSingleMeal } from './meals/[id]';
 import "../styles/app.css";
+import {SessionProvider} from "next-auth/react"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,7 +21,7 @@ const queryClient = new QueryClient({
 
 axios.defaults.baseURL = 'https://www.themealdb.com/api/json/v1/1/';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: {session, ...pageProps} }) {
   useEffect(() => {
     if (localStorage.getItem('savedMeals')) {
       const savedMeals = JSON.parse(localStorage.getItem('savedMeals'));
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    <SessionProvider session={session}>            
       <Head>
         <title>Frace Recipe</title>
         <meta name="description" content="Frace Recipes is a listing website of meal recipe" />
@@ -52,6 +54,7 @@ function MyApp({ Component, pageProps }) {
         </Layout>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
+      </SessionProvider>
     </>
   );
 }

@@ -1,5 +1,5 @@
 {
-	"name": "meal-khuj",
+	"name": "frace-recipes",
 	"version": "0.1.0",
 	"private": false,
 	"scripts": {
@@ -12,8 +12,11 @@
 		"@tanstack/react-query": "^4.2.3",
 		"@tanstack/react-query-devtools": "^4.2.3",
 		"axios": "^0.27.2",
+		"bcryptjs": "^2.4.3",
 		"clsx": "^1.2.1",
+		"mongoose": "^6.6.4",
 		"next": "12.2.5",
+		"next-auth": "^4.12.2",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-hot-toast": "^2.3.0",

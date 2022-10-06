@@ -8,6 +8,7 @@ export default NextAuth({
     providers:[
         CredentialsProvider({
             type:"credentials",
+            credentials:{},
           
             async authorize(credentials){
                 //connect to datatbase

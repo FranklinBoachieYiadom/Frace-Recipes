@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import {signIn} from "next-auth/react"
 import {useRouter} from "next/router"
 
-function login() {
+function Login() {
     const [data, setData]=useState({
         email: "",
         password: "",
@@ -17,7 +17,7 @@ function login() {
 
       const handleSubmit = async (e)=>{
         e.preventDefault();
-       const result = await signIn("credetials", {
+       const result = await signIn("credentials", {
             email:data.email,
             password:data.password,
             redirect:false,
@@ -26,17 +26,19 @@ function login() {
         if(result.error){
             setError(result.error);
         }
-        else {
+        else{
             router.push("/homePage")
         }
       };
+
+      
 
   return (
     <div className='grid h-fit mt-16  place-items-center'>
         
 <div className=" text-2xl p-4 w-full max-w-2xl min-h-full bg-white rounded-lg border border-gray-200 shadow-2xl sm:p-6 md:p-8 dark:bg-transparent dark:border-gray-700">
     <form onSubmit= {handleSubmit} className="space-y-6">
-    {error && <p>{error}</p>}
+    {error && <p className='text-red-700'>{error}</p>}
         <div className= "p-6 pl-0 pt-2 text-7xl text-gray-900 dark:text-white font-semibold">
             <h2 > <span className='text-orange-500'>Frace</span>Recipes🍂</h2>
         </div>
@@ -69,4 +71,4 @@ function login() {
   )
 }
 
-export default login
+export default Login

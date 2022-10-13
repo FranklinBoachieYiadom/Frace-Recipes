@@ -18,12 +18,12 @@ if(status !=="authenticated"){
 
   return (
     <div>
-    Protectected
+    {/* Protectected
     {status==="authenticated"?(
       <button onClick = {()=>signOut({callbackUrl:"/login"})}>Logout</button>
     ):(
     <button>Login</button>
-    )}
+    )} */}
 
         <HeroSection/>
         <About/>

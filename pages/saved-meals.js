@@ -8,7 +8,23 @@ import Title from '../components/text/Title';
 import { getSingleMeal } from './meals/[id]';
 import classes from './savedMeals.module.scss';
 
-function SavedMeals() {
+
+
+
+//getStaticProps
+export const getStaticProps = async ()=>{
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/recipes`);
+  const data = await res.json();
+
+  return{
+    props: {recipes: data.recipes}
+  }
+}
+
+
+
+
+function SavedMeals({recipes}) {
   const [savedMealsId, setSavedMealsId] = useState([]);
 
   const queries = savedMealsId.map((id) => (
@@ -39,6 +55,10 @@ function SavedMeals() {
           }
 
           return (
+            <>
+            {recipes.map(recipe =>(
+              <p>{recipe.food}</p>
+            ))}
             <Link href={`/meals/${data.idMeal}`} key={data.idMeal}>
               <a className={classes.singleMeal}>
                 <Title variant="secondary" className={classes.mealTitle}>{data.strMeal}</Title>
@@ -54,6 +74,7 @@ function SavedMeals() {
                 </PointText>
               </a>
             </Link>
+            </>
           );
         })}
       </div>

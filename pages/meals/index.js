@@ -14,6 +14,8 @@ const override = {
   margin: '0 auto',
 };
 
+
+
 const getMeals = async ({ queryKey }) => {
   const { data } = await axios.get(`filter.php?c=${queryKey[1]}`);
   return data?.meals || [];
@@ -107,7 +109,7 @@ function Meals() {
         {data && queriedData && data.length === 0 && queriedData.length === 0 && (
           <Text>No meals found</Text>
         )}
-      </div>
+      </div>     
     </div>
   );
 }

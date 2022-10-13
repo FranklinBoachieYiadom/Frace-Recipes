@@ -10,7 +10,15 @@ const postSchema = new Schema(
             type: String,
             required: true,
         },
-        ingridients:{
+        time: {
+            type: String,
+            emun: ["breakfast", "lunch", "supper"]
+        },
+        type: {
+            type: String,
+            emun: ["beef", "chicken", "lamb", "pork","seaFood","sideDish","vegetarian","dessert","miscellaneous"]
+        },
+        ingredients:{
             type: String,
             required: true,
         },
